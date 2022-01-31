@@ -1,0 +1,147 @@
+unable to run, main file "main.c" not found
+ gcc -g p6original.c
+ gbd a.out
+bash: gbd: command not found
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+unable to run, main file "main.c" not found
+ gcc -g p7original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main 
+Breakpoint 1 at 0x87c: file p7original.c, line 51.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7original.c:51
+51    a=input_complex();
+(gdb) s
+unable to run, main file "main.c" not found
+ gcc -g p8original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa13: file p8original.c, line 77.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8original.c:77
+77  {
+(gdb) n
+78      int n = get_n ();
+(gdb) s
+get_n () at p8original.c:28
+28  {
+(gdb) n
+30    printf("Enter the number of complex numbers\n");
+(gdb) n
+Enter the number of complex numbers
+31    scanf("%d",&n);
+(gdb) n
+2
+32    return n;
+(gdb) n
+33  }
+(gdb) n
+main () at p8original.c:79
+79      Complex c[n],result;
+(gdb) n
+80      input_n_complex ( n, c);
+(gdb) s
+input_n_complex (n=2, c=0x7fffd210ab50) at p8original.c:46
+46    for (i=0;i<n;i++)
+(gdb) n
+47      c[i]=input_complex ();
+(gdb) n
+Enter complex number
+2 3
+46    for (i=0;i<n;i++)
+(gdb) n
+47      c[i]=input_complex ();
+(gdb) n
+Enter complex number
+4 5
+46    for (i=0;i<n;i++)
+(gdb) n
+48  }
+(gdb) n
+main () at p8original.c:81
+81      result=add_n_complex ( n, c);
+(gdb) s
+add_n_complex (n=2, c=0x7fffd210ab50) at p8original.c:62
+62    r.real = 0;
+(gdb) n
+63    r.imaginary =0;
+(gdb) n
+64    for(i=0;i<n;i++)
+(gdb) n
+65      r= add(r,c[i]);
+(gdb) n
+64    for(i=0;i<n;i++)
+(gdb) n
+65      r= add(r,c[i]);
+(gdb) n
+64    for(i=0;i<n;i++)
+(gdb) n
+66  }
+(gdb) n
+main () at p8original.c:82
+82      output ( n, c,result);
+(gdb) s
+output (n=2, c=0x7fffd210ab50, result=...) at p8original.c:71
+71    for (i = 0; i < n; i++)
+(gdb) n
+72      printf("%f + %fi\n", c[i].real, c[i].imaginary);
+(gdb) n
+2.000000 + 3.000000i
+71    for (i = 0; i < n; i++)
+(gdb) n
+72      printf("%f + %fi\n", c[i].real, c[i].imaginary);
+(gdb) n
+4.000000 + 5.000000i
+71    for (i = 0; i < n; i++)
+(gdb) n
+73    printf("+ %f + %fi is %f + %fi\n", c[n-1].real, c[n-1].imaginary, result.real, result.imaginary);
+(gdb) n
++ 4.000000 + 5.000000i is 0.000000 + 0.000000i
+74  }
+(gdb) n
+main () at p8original.c:83
+83      return 0;
+(gdb) n
+84  }
+(gdb) n
