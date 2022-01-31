@@ -1,2 +1,1 @@
 language = "c"
-run = "gcc -g p1original.c"
