@@ -1,0 +1,95 @@
+gcc -g p6original.c
+ gbd a.out
+bash: gbd: command not found
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+unable to run, main file "main.c" not found
+ gcc -g p7original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main 
+Breakpoint 1 at 0x87c: file p7original.c, line 51.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7original.c:51
+51    a=input_complex();
+(gdb) s
+input_complex () at p7original.c:24
+24  {
+(gdb) n
+26    printf ("Enter complex number\n");
+(gdb) n
+Enter complex number
+27    scanf ("%f%f", &x.real, &x.imaginary);
+(gdb) n
+2 3 
+28    return x;
+(gdb) n
+30  }
+(gdb) n
+main () at p7original.c:52
+52    b=input_complex ();
+(gdb) s
+input_complex () at p7original.c:24
+24  {
+(gdb) n
+26    printf ("Enter complex number\n");
+(gdb) n
+Enter complex number
+27    scanf ("%f%f", &x.real, &x.imaginary);
+(gdb) n
+
+4 5 
+28    return x;
+(gdb) n
+30  }
+(gdb) n
+main () at p7original.c:53
+53    c = add (a, b);
+(gdb) s
+add (a=..., b=...) at p7original.c:36
+36    c.real = a.real + b.real;
+(gdb) n
+37    c.imaginary = a.imaginary + b.imaginary;
+(gdb) n
+38    return c;
+(gdb) n
+39  }
+(gdb) p c 
+$1 = {real = 6, imaginary = 8}
+(gdb) n
+main () at p7original.c:54
+54    output (a, b, c);
+(gdb) s
+output (a=..., b=..., c=...) at p7original.c:44
+44    printf ("%f+%fi+%f+%fi = %f+%fi\n", a.real, a.imaginary, b.real, b.imaginary, c.real, c.imaginary);
+(gdb) n
+2.000000+3.000000i+4.000000+5.000000i = 6.000000+8.000000i
+45  }
+(gdb) n
+main () at p7original.c:55
+55    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 808) exited normally]
+(gdb) 
