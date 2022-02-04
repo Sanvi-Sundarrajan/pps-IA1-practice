@@ -38,6 +38,8 @@ Enter array size
 16    return n;
 (gdb) n
 17  }
+(gdb) p n
+$5 = 5
 (gdb) n
 main () at p4original.c:47
 47    int a[n];

@@ -36,6 +36,8 @@ Enter n value
 16      return n;
 (gdb) n
 17    }
+(gdb) p n
+$5 = 5
 (gdb) n
 main () at p3original.c:36
 36      sum=sum_n(n);

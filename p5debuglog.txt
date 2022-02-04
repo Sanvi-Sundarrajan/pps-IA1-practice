@@ -38,6 +38,8 @@ Enter array size
 16    return n;
 (gdb) n
 17  }
+(gdb) p n
+$3 = 3
 (gdb) n
 main () at p4original.c:47
 47    int a[n];
@@ -141,6 +143,8 @@ my_sqrt (n=2) at p5original.c:11
 18    return sqrt_result;
 (gdb) n
 19  }
+(gdb) p sqrt_result 
+$1.41421354 = 1.41421354
 (gdb) n
 main () at p5original.c:29
 29     output(n,res);

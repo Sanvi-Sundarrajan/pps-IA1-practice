@@ -46,6 +46,8 @@ Enter complex number
 28    return x;
 (gdb) n
 30  }
+(gdb) p x
+$1={real =2,imaginary = 3}
 (gdb) n
 main () at p7original.c:52
 52    b=input_complex ();
@@ -63,6 +65,8 @@ Enter complex number
 28    return x;
 (gdb) n
 30  }
+(gdb) p x
+$1={real =4,imaginary = 5}
 (gdb) n
 main () at p7original.c:53
 53    c = add (a, b);

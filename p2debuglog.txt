@@ -32,8 +32,12 @@ input () at p2original.c:7
 Enter the number
 10    scanf("%d",&n);
 (gdb) n
-2
+1
 11    return n;
+(gdb) p *n
+Cannot access memory at address 0x1
+(gdb) p n
+$1 = 1
 (gdb) n
 12  }
 (gdb) n
@@ -48,12 +52,14 @@ input () at p2original.c:7
 Enter the number
 10    scanf("%d",&n);
 (gdb) n
-2 
+2
 11    return n;
 (gdb) n
 12  }
-(gdb) nn
-Undefined command: "nn".  Try "help".
+(gdb) p b
+No symbol "b" in current context.
+(gdb) p n
+$2 = 2
 (gdb) n
 main () at p2original.c:37
 37    c=input();
@@ -66,38 +72,34 @@ input () at p2original.c:7
 Enter the number
 10    scanf("%d",&n);
 (gdb) n
-1
+3
 11    return n;
 (gdb) n
 12  }
+(gdb) p n
+$3 = 3
 (gdb) n
 main () at p2original.c:38
 38    largest=cmp(a,b,c);
 (gdb) s
-cmp (a=2, b=2, c=1) at p2original.c:15
 15    if (a>b&&a>c)
 (gdb) n
 19    else if(b>c)
-(gdb) 
-21      return b;
+(gdb) n
+25      return c;
 (gdb) n
 27  }
 (gdb) n
 main () at p2original.c:39
 39    output(a,b,c,largest);
 (gdb) s
-output (a=2, b=2, c=1, largest=2) at p2original.c:30
-30    printf("The largest number of %d,%d and %d is %d",a,b,c,largest);
+ printf("The largest number of %d,%d and %d is %d",a,b,c,largest);
 (gdb) n
 31  }
 (gdb) n
 main () at p2original.c:40
 40    return 0;
-(gdb) p largest 
-$1 = 2
-(gdb) n
-41  }
 (gdb) c
 Continuing.
-The largest number of 2,2 and 1 is 2[Inferior 1 (process 887) exited normally]
+The largest number of 1,2 and 3 is 3[Inferior 1 (process 278) exited normally]
 (gdb) 
