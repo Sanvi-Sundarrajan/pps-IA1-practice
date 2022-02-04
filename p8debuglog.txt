@@ -25,10 +25,11 @@ Find the GDB manual and other documentation resources online at:
 <http://www.gnu.org/software/gdb/documentation/>.
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
-Reading symbols from a.out...done.
-(gdb) b main 
-Breakpoint 1 at 0x87c: file p7original.c, line 51.
-(gdb) r
+Reading symbols from a.out...
+(gdb) run
+Starting program: /home/a.out 
+
+Breakpoint 1, main () at main.c:78
 78          int n = get_n ();
 (gdb) step
 get_n () at main.c:28
@@ -41,17 +42,17 @@ Enter the number of complex numbers
 (gdb) next
 2
 32        return n;
-(gdb) n
+(gdb) next
 33      }
-(gdb) n
-main () at main.c:79
-79          Complex c[n],result;
 (gdb) p n
 $1 = 2
 (gdb) n
+main () at main.c:79
+79          Complex c[n],result;
+(gdb) s
 80          input_n_complex ( n, c);
 (gdb) s
-input_n_complex (n=32767, c=0x7fffffffeb80) at main.c:44
+input_n_complex (n=32767, c=0x7fffffffeb70) at main.c:44
 44      {
 (gdb) n
 46        for (i=0;i<n;i++)
@@ -61,49 +62,53 @@ input_n_complex (n=32767, c=0x7fffffffeb80) at main.c:44
 Enter complex number
 2 3
 46        for (i=0;i<n;i++)
+(gdb) p c
+$2 = (Complex *) 0x7fffffffeb60
 (gdb) p c[0]
-$2 = {real = 2, imaginary = 3}
-(gdb) n
+$3 = {real = 2, imaginary = 3}
+(gdb) next
 47          c[i]=input_complex ();
-(gdb) n
+(gdb) next
 Enter complex number
-4 5
+4 5 
 46        for (i=0;i<n;i++)
-(gdb) n
+(gdb) p c[1]
+$4 = {real = 4, imaginary = 5}
+(gdb) next
 48      }
-(gdb) n
+(gdb) next
 main () at main.c:81
 81          result=add_n_complex ( n, c);
-(gdb) p c[1]
-$3 = {real = 4, imaginary = 5}
-(gdb) s
+(gdb) step
 add_n_complex (n=2, c=0x5555555550c0 <_start>) at main.c:59
 59      {
-(gdb) n
+(gdb) next
 62        r.real = 0;
-(gdb) n
+(gdb) next
 63        r.imaginary =0;
-(gdb) n
+(gdb) next
 64        for(i=0;i<n;i++)
-(gdb) n
+(gdb) next
 65          r= add(r,c[i]);
-(gdb) n
+(gdb) next
 64        for(i=0;i<n;i++)
-(gdb) n
+(gdb) p r[0]
+Structure has no component named operator[].
+(gdb) p r
+$5 = {real = 2, imaginary = 3}
+(gdb) next
 65          r= add(r,c[i]);
-(gdb) n
+(gdb) next
 64        for(i=0;i<n;i++)
+(gdb) p r
+$6 = {real = 6, imaginary = 8}
 (gdb) n
 66      }
 (gdb) n
 main () at main.c:82
 82          output ( n, c,result);
-(gdb) p r 
-No symbol "r" in current context.
-(gdb) p result 
-$4 = {real = 6, imaginary = 8}
 (gdb) s
-output (n=2, c=0x7fffffffeb70, result=...) at main.c:69
+output (n=2, c=0x7fffffffeb60, result=...) at main.c:69
 69      {
 (gdb) n
 71        for (i = 0; i < n; i++)
@@ -127,12 +132,7 @@ main () at main.c:83
 83          return 0;
 (gdb) n
 84      }
-(gdb) n
-__libc_start_main (main=0x555555555445 <main>, argc=1, argv=0x7fffffffecd8, 
-    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
-    stack_end=0x7fffffffecc8) at ../csu/libc-start.c:342
-342     ../csu/libc-start.c: No such file or directory.
 (gdb) c
 Continuing.
-[Inferior 1 (process 1550) exited normally]
-(gdb) Quit
+[Inferior 1 (process 3016) exited normally]
+(gdb) 

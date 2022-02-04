@@ -1,6 +1,4 @@
 gcc -g p6original.c
- gbd a.out
-bash: gbd: command not found
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -16,53 +14,70 @@ Find the GDB manual and other documentation resources online at:
 <http://www.gnu.org/software/gdb/documentation/>.
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
-Reading symbols from a.out...done.
-(gdb) b main
-Breakpoint 1 at 0x8ad: file p6original.c, line 33.
-(gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
-warning: Error disabling address space randomization: Operation not permitted
+Reading symbols from a.out...
+(gdb) info break
 
-Breakpoint 1, main () at p6original.c:33
-33    {
-(gdb) n
-35      input_two_string(a,b);
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000000130b in main at main.c:35
+
 (gdb) s
-input_two_string (a=0x7fffb317ae10 "\awS\244&\177", b=0x7fffb317ae80 "")
-    at p6original.c:14
-14      printf("Enter the two strings \n");
+The program is not being run.
+(gdb) run
+Starting program: /home/a.out 
+
+Breakpoint 1, main () at main.c:35
+35          input_two_string(a,b);
+(gdb) s
+input_two_string (
+    a=0x9c0000009c0 <error: Cannot access memory at address 0x9c0000009c0>, 
+    b=0x9c0000009c0 <error: Cannot access memory at address 0x9c0000009c0>)
+    at main.c:13
+13        {
+(gdb) n
+14          printf("Enter the two strings \n");
 (gdb) n
 Enter the two strings 
-15      scanf("%s%s",a,b);
+15          scanf("%s%s",a,b);
 (gdb) n
 hello world 
-16    }
+16        }
+(gdb) p a
+$1 = 0x7fffffffeb00 "hello"
+(gdb) p b
+$2 = 0x7fffffffeb70 "world"
 (gdb) n
-main () at p6original.c:36
-36      int result=str_cmp(a,b);
+main () at main.c:36
+36          int result=str_cmp(a,b);
 (gdb) s
-str_cmp (a=0x7fffb317ae10 "hello", b=0x7fffb317ae80 "world") at p6original.c:20
-20      for(i = 0;a[i]==b[i]&&b[i] != '\0';i++);
+str_cmp (
+    a=0x5555555551e5 <input_two_string+60> "\220\311\303\363\017\036\372UH\211\345H\211}\350H\211u\340\307", <incomplete sequence \374>, b=0x0) at main.c:18
+18        { 
 (gdb) n
-21        return a[i]-b[i];
+20          for(i = 0;a[i]==b[i]&&b[i] != '\0';i++);
 (gdb) n
-22    }
+21            return a[i]-b[i];
 (gdb) n
-main () at p6original.c:37
-37      output(a,b,result);
+22        }
+(gdb) n
+main () at main.c:37
+37          output(a,b,result);
 (gdb) s
-output (a=0x7fffb317ae10 "hello", b=0x7fffb317ae80 "world", result=-15)
-    at p6original.c:25
-25      if(result<0)
+output (a=0xffffeb00 <error: Cannot access memory at address 0xffffeb00>, 
+    b=0x7fffffffeb70 "world", result=32767) at main.c:24
+24        {
 (gdb) n
-26        printf("%s is greater than %s\n",b,a);
+25          if(result<0)
+(gdb) n
+26            printf("%s is greater than %s\n",b,a);
 (gdb) n
 world is greater than hello
-31    }
+31        }
 (gdb) n
-main () at p6original.c:38
-38      return 0;
+main () at main.c:38
+38          return 0;
+(gdb) s
+39        }
 (gdb) c
 Continuing.
-[Inferior 1 (process 654) exited normally]
+[Inferior 1 (process 6906) exited normally]
 (gdb) 

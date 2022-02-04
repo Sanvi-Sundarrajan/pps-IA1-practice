@@ -32,14 +32,12 @@ input () at p2original.c:7
 Enter the number
 10    scanf("%d",&n);
 (gdb) n
-1
+2
 11    return n;
-(gdb) p *n
-Cannot access memory at address 0x1
-(gdb) p n
-$1 = 1
 (gdb) n
 12  }
+(gdb) p n
+$1 = 2
 (gdb) n
 main () at p2original.c:36
 36    b=input();
@@ -56,32 +54,29 @@ Enter the number
 11    return n;
 (gdb) n
 12  }
-(gdb) p b
-No symbol "b" in current context.
 (gdb) p n
 $2 = 2
 (gdb) n
 main () at p2original.c:37
 37    c=input();
-(gdb) s
-input () at p2original.c:7
-7   {
+(gdb) 
 (gdb) n
 9     printf("Enter the number\n");
 (gdb) n
 Enter the number
 10    scanf("%d",&n);
 (gdb) n
-3
+2
 11    return n;
-(gdb) n
-12  }
 (gdb) p n
 $3 = 3
-(gdb) n
-main () at p2original.c:38
+
+
 38    largest=cmp(a,b,c);
+(gdb) p n 
+No symbol "n" in current context.
 (gdb) s
+cmp (a=2, b=2, c=3) at p2original.c:15
 15    if (a>b&&a>c)
 (gdb) n
 19    else if(b>c)
@@ -89,17 +84,26 @@ main () at p2original.c:38
 25      return c;
 (gdb) n
 27  }
-(gdb) n
+(gdb) 
 main () at p2original.c:39
 39    output(a,b,c,largest);
 (gdb) s
- printf("The largest number of %d,%d and %d is %d",a,b,c,largest);
+output (a=2, b=2, c=3, largest=3) at p2original.c:30
+30    printf("The largest number of %d,%d and %d is %d",a,b,c,largest);
 (gdb) n
 31  }
 (gdb) n
 main () at p2original.c:40
 40    return 0;
+(gdb) 
+41  }
+(gdb) n
+__libc_start_main (main=0x55c94de0082b <main>, argc=1, argv=0x7ffd7352de58, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7ffd7352de48) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
 (gdb) c
 Continuing.
-The largest number of 1,2 and 3 is 3[Inferior 1 (process 278) exited normally]
+The largest number of 2,2 and 3 is 3[Inferior 1 (process 204) exited normally]
+(gdb) Quit
 (gdb) 

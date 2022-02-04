@@ -1,4 +1,4 @@
-gcc -g p6original.c
+gcc -g p7original.c
  gbd a.out
 bash: gbd: command not found
  gdb a.out
@@ -24,76 +24,84 @@ Find the GDB manual and other documentation resources online at:
 <http://www.gnu.org/software/gdb/documentation/>.
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
-Reading symbols from a.out...done.
-(gdb) b main 
-Breakpoint 1 at 0x87c: file p7original.c, line 51.
-(gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
-warning: Error disabling address space randomization: Operation not permitted
+Reading symbols from a.out...
+(gdb) info break
 
-Breakpoint 1, main () at p7original.c:51
-51    a=input_complex();
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000000012c3 in main at main.c:51
+(gdb) run
+Starting program: /home/a.out 
+
+Breakpoint 1, main () at main.c:51
+51        a=input_complex();
 (gdb) s
-input_complex () at p7original.c:24
-24  {
+input_complex () at main.c:24
+24      {
 (gdb) n
-26    printf ("Enter complex number\n");
+26        printf ("Enter complex number\n");
 (gdb) n
 Enter complex number
-27    scanf ("%f%f", &x.real, &x.imaginary);
+27        scanf ("%f%f", &x.real, &x.imaginary);
 (gdb) n
-2 3 
-28    return x;
+2 3
+28        return x;
 (gdb) n
-30  }
-(gdb) p x
-$1={real =2,imaginary = 3}
+30      }
+(gdb) p x.real
+$1 = 2
+(gdb) p x.imaginary
+$2 = 3
 (gdb) n
-main () at p7original.c:52
-52    b=input_complex ();
+main () at main.c:52
+52        b=input_complex ();
 (gdb) s
-input_complex () at p7original.c:24
-24  {
+input_complex () at main.c:24
+24      {
 (gdb) n
-26    printf ("Enter complex number\n");
+26        printf ("Enter complex number\n");
 (gdb) n
 Enter complex number
-27    scanf ("%f%f", &x.real, &x.imaginary);
+27        scanf ("%f%f", &x.real, &x.imaginary);
 (gdb) n
-
-4 5 
-28    return x;
+4 5
+28        return x;
 (gdb) n
-30  }
-(gdb) p x
-$1={real =4,imaginary = 5}
+30      }
+(gdb) p x.real
+$3 = 4
+(gdb) p x.imaginary
+$4 = 5
 (gdb) n
-main () at p7original.c:53
-53    c = add (a, b);
+main () at main.c:53
+53        c = add (a, b);
 (gdb) s
-add (a=..., b=...) at p7original.c:36
-36    c.real = a.real + b.real;
+add (a=..., b=...) at main.c:34
+34      {
 (gdb) n
-37    c.imaginary = a.imaginary + b.imaginary;
+36        c.real = a.real + b.real;
 (gdb) n
-38    return c;
+37        c.imaginary = a.imaginary + b.imaginary;
 (gdb) n
-39  }
-(gdb) p c 
-$1 = {real = 6, imaginary = 8}
+38        return c;
 (gdb) n
-main () at p7original.c:54
-54    output (a, b, c);
+39      }
+(gdb) p c     
+$5 = {real = 6, imaginary = 8}
+(gdb) n
+main () at main.c:54
+54        output (a, b, c);
 (gdb) s
-output (a=..., b=..., c=...) at p7original.c:44
-44    printf ("%f+%fi+%f+%fi = %f+%fi\n", a.real, a.imaginary, b.real, b.imaginary, c.real, c.imaginary);
+output (a=..., b=..., c=...) at main.c:43
+43      {
+(gdb) n
+44        printf ("%f+%fi+%f+%fi = %f+%fi\n", a.real, a.imaginary, b.real, b.imaginary, c.real, c.imaginary);
 (gdb) n
 2.000000+3.000000i+4.000000+5.000000i = 6.000000+8.000000i
-45  }
+45      }
 (gdb) n
-main () at p7original.c:55
-55    return 0;
+main () at main.c:55
+55        return 0;
 (gdb) c
 Continuing.
-[Inferior 1 (process 808) exited normally]
+[Inferior 1 (process 2732) exited normally]
 (gdb) 

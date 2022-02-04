@@ -1,4 +1,4 @@
-gcc -g p4original.c
+gcc -g p5original.c
  gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
@@ -14,150 +14,102 @@ Find the GDB manual and other documentation resources online at:
 <http://www.gnu.org/software/gdb/documentation/>.
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
-Reading symbols from a.out...done.
-(gdb) b main
-Breakpoint 1 at 0x8fb: file p4original.c, line 44.
-(gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
-warning: Error disabling address space randomization: Operation not permitted
+Reading symbols from a.out...
+(gdb) run
+Starting program: /home/a.out 
 
-Breakpoint 1, main () at p4original.c:44
-44  {
-(gdb) n
-46    n = input_array_size ();
+Breakpoint 1, main () at main.c:27
+27         float n = input();
 (gdb) s
-input_array_size () at p4original.c:12
-12  {
+input () at main.c:4
+4       { float n;
 (gdb) n
-14    printf ("Enter array size\n");
-(gdb) n
-Enter array size
-15    scanf ("%d", &n);
-(gdb) n
-3
-16    return n;
-(gdb) n
-17  }
-(gdb) p n
-$3 = 3
-(gdb) n
-main () at p4original.c:47
-47    int a[n];
-(gdb) n
-48    input_array (n, a);
-(gdb) s
-input_array (n=3, a=0x7ffead2920d0) at p4original.c:22
-22    printf ("Enter the %d elements array \n", n);
-(gdb) n
-Enter the 3 elements array 
-23    for (i = 0; i < n; i++)
-(gdb) n
-24   scanf ("%d", &a[i]);
-(gdb) n
-1 
-23    for (i = 0; i < n; i++)
-(gdb) n
-24   scanf ("%d", &a[i]);
-(gdb) n
-7
-unable to run, main file "main.c" not found
- gcc -g p5original.c
- gdb a.out
-GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
-Copyright (C) 2018 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "x86_64-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from a.out...done.
-(gdb) b main
-Breakpoint 1 at 0x876: file p5original.c, line 27.
-(gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
-warning: Error disabling address space randomization: Operation not permitted
-
-Breakpoint 1, main () at p5original.c:27
-27     float n = input();
-(gdb) s
-input () at p5original.c:4
-4   { float n;
-(gdb) n
-5     printf("Enter a number\n");
+5         printf("Enter a number\n");
 (gdb) n
 Enter a number
-6     scanf("%f",&n);
+6         scanf("%f",&n);
 (gdb) n
 2
-7     return n;
+7         return n;
 (gdb) n
-8    }
+8        }
 (gdb) n
-main () at p5original.c:28
-28     float res = my_sqrt(n);
+main () at main.c:28
+28         float res = my_sqrt(n);
+(gdb) p n
+$1 = 2
 (gdb) s
-my_sqrt (n=2) at p5original.c:11
-11      sqrt_result = n/2;
+my_sqrt (n=3.0611365e-41) at main.c:10
+10      {   float sqrt_result,temp;
 (gdb) n
-12      temp = 0;
+11          sqrt_result = n/2;
 (gdb) n
-13    while(fabs(sqrt_result - temp)>0.0000001)
+12          temp = 0;
 (gdb) n
-15        temp = sqrt_result;
+13        while(fabs(sqrt_result - temp)>0.0000001)
 (gdb) n
-16        sqrt_result = ( (n/temp) + temp) / 2;
+15            temp = sqrt_result;
 (gdb) n
-13    while(fabs(sqrt_result - temp)>0.0000001)
+16            sqrt_result = ( (n/temp) + temp) / 2;
 (gdb) n
-15        temp = sqrt_result;
+13        while(fabs(sqrt_result - temp)>0.0000001)
+(gdb) p sqrt_result
+$2 = 1.5
 (gdb) n
-16        sqrt_result = ( (n/temp) + temp) / 2;
+15            temp = sqrt_result;
 (gdb) n
-13    while(fabs(sqrt_result - temp)>0.0000001)
+16            sqrt_result = ( (n/temp) + temp) / 2;
 (gdb) n
-15        temp = sqrt_result;
+13        while(fabs(sqrt_result - temp)>0.0000001)
+(gdb) p sqrt_result
+$3 = 1.41666675
 (gdb) n
-16        sqrt_result = ( (n/temp) + temp) / 2;
+15            temp = sqrt_result;
 (gdb) n
-13    while(fabs(sqrt_result - temp)>0.0000001)
+16            sqrt_result = ( (n/temp) + temp) / 2;
 (gdb) n
-15        temp = sqrt_result;
+13        while(fabs(sqrt_result - temp)>0.0000001)
+(gdb) p sqrt_result
+$4 = 1.41421568
 (gdb) n
-16        sqrt_result = ( (n/temp) + temp) / 2;
+15            temp = sqrt_result;
 (gdb) n
-13    while(fabs(sqrt_result - temp)>0.0000001)
+16            sqrt_result = ( (n/temp) + temp) / 2;
 (gdb) n
-15        temp = sqrt_result;
+13        while(fabs(sqrt_result - temp)>0.0000001)
+(gdb) p sqrt_result
+$5 = 1.41421354
 (gdb) n
-16        sqrt_result = ( (n/temp) + temp) / 2;
+15            temp = sqrt_result;
 (gdb) n
-13    while(fabs(sqrt_result - temp)>0.0000001)
+16            sqrt_result = ( (n/temp) + temp) / 2;
 (gdb) n
-18    return sqrt_result;
+13        while(fabs(sqrt_result - temp)>0.0000001)
+(gdb) p sqrt_result
+$6 = 1.41421354
 (gdb) n
-19  }
-(gdb) p sqrt_result 
-$1.41421354 = 1.41421354
+18        return sqrt_result;
 (gdb) n
-main () at p5original.c:29
-29     output(n,res);
+19      }
+(gdb) p sqrt_result
+$7 = 1.41421354
+(gdb) n
+main () at main.c:29
+29         output(n,res);
 (gdb) s
-output (n=2, sqrt_result=1.41421354) at p5original.c:22
-22    printf("The sqrt of given number %f is %f\n",n,sqrt_result);
+output (n=1.41421354, sqrt_result=1.41421354) at main.c:21
+21      { 
+(gdb) n
+22        printf("The sqrt of given number %f is %f\n",n,sqrt_result);
 (gdb) n
 The sqrt of given number 2.000000 is 1.414214
-23  }
+23      }
 (gdb) n
-main () at p5original.c:30
-30     return 0;
+main () at main.c:30
+30         return 0;
+(gdb) n
+31       }
 (gdb) c
 Continuing.
-[Inferior 1 (process 494) exited normally]
+[Inferior 1 (process 2902) exited normally]
 (gdb) 

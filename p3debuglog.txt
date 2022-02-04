@@ -16,100 +16,113 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x849: file p3original.c, line 35.
-(gdb) r
-Starting program: /home/runner/pps-IA1-practice/a.out 
-warning: Error disabling address space randomization: Operation not permitted
-
-Breakpoint 1, main () at p3original.c:35
-35      n=input_n();
-(gdb) s
-input_n () at p3original.c:12
-12    {
-(gdb) n
-14      printf("Enter n value \n");
-(gdb) n
+Breakpoint 1, main () at main.c:35
+35          n=input_n();
+(gdb) step
+input_n () at main.c:12
+12        {
+(gdb) next
+14          printf("Enter n value \n");
+(gdb) next
 Enter n value 
-15      scanf("%d",&n);
-(gdb) n
+15          scanf("%d",&n);
+(gdb) next
 5
-16      return n;
+16          return n;
 (gdb) n
-17    }
+17        }
 (gdb) p n
-$5 = 5
+$1 = 5
 (gdb) n
-main () at p3original.c:36
-36      sum=sum_n(n);
+main () at main.c:36
+36          sum=sum_n(n);
 (gdb) s
-sum_n (n=5) at p3original.c:20
-20      int i,sum=0;
-(gdb) 
-21      for(i=0;i<=n;i++)
+sum_n (n=21845) at main.c:19
+19        {
 (gdb) n
-22      sum=sum+i;
+20          int i,sum=0;
 (gdb) n
-21      for(i=0;i<=n;i++)
+21          for(i=0;i<=n;i++)
 (gdb) n
-22      sum=sum+i;
-(gdb) n
-21      for(i=0;i<=n;i++)
-(gdb) n
-22      sum=sum+i;
-(gdb) n
-21      for(i=0;i<=n;i++)
-(gdb) 
-22      sum=sum+i;
-(gdb) nn
-Undefined command: "nn".  Try "help".
-(gdb) n
-21      for(i=0;i<=n;i++)
-(gdb) n
-22      sum=sum+i;
-(gdb) n
-21      for(i=0;i<=n;i++)
-(gdb) n
-22      sum=sum+i;
-(gdb) n
-21      for(i=0;i<=n;i++)
-(gdb) n
-23      return sum;
-(gdb) n
-24    }
-(gdb) p sum 
-$1 = 15
-(gdb) n
-main () at p3original.c:37
-37      output(n,sum);
-(gdb) s
-output (n=5, sum=15) at p3original.c:28
-28      for(i=1;i<n;i++)
-(gdb) n
-29      printf("%d+",i);
-(gdb) nn
-Undefined command: "nn".  Try "help".
-(gdb) n
-28      for(i=1;i<n;i++)
-(gdb) n
-29      printf("%d+",i);
-(gdb) n
-28      for(i=1;i<n;i++)
-(gdb) n
-29      printf("%d+",i);
-(gdb) n
-28      for(i=1;i<n;i++)
-(gdb) n
-29      printf("%d+",i);
-(gdb) n
-28      for(i=1;i<n;i++)
-(gdb) n
-30      printf("%d=%d",n,sum);
-(gdb) n
-31    }
-(gdb) n
-main () at p3original.c:38
-38      return 0;
-(gdb) c
+22          sum=sum+i;
+(gdb) nnext
+21          for(i=0;i<=n;i++)
+(gdb)np sum
+Undefined command: "np".  Try "help".
+(gdb) p sum
+$2 = 0
+(gdb) next
+22          sum=sum+i;
+(gdb) next
+21          for(i=0;i<=n;i++)
+(gdb) p sum
+$3 = 1
+(gdb) next
+22          sum=sum+i;
+(gdb) next
+21          for(i=0;i<=n;i++)
+(gdb) p sum
+$4 = 3
+(gdb) next
+22          sum=sum+i;
+(gdb) next
+21          for(i=0;i<=n;i++)
+(gdb) p sum
+$5 = 6
+(gdb) next
+22          sum=sum+i;
+(gdb) next
+21          for(i=0;i<=n;i++)
+(gdb) p sum
+$6 = 10
+(gdb) next
+22          sum=sum+i;
+(gdb) next
+21          for(i=0;i<=n;i++)
+(gdb) p sum
+$7 = 15
+(gdb) next
+23          return sum;
+(gdb) next
+24        }
+(gdb) p sum
+$8 = 15
+(gdb) next
+main () at main.c:37
+37          output(n,sum);
+(gdb) step
+output (n=5, sum=1431654888) at main.c:26
+26        {
+(gdb) next
+28          for(i=1;i<n;i++)
+(gdb) next
+29          printf("%d+",i);
+(gdb) next
+28          for(i=1;i<n;i++)
+(gdb) next
+29          printf("%d+",i);
+(gdb) next
+28          for(i=1;i<n;i++)
+(gdb) next
+29          printf("%d+",i);
+(gdb) next
+28          for(i=1;i<n;i++)
+(gdb) next
+29          printf("%d+",i);
+(gdb) next
+28          for(i=1;i<n;i++)
+(gdb) next
+30          printf("%d=%d",n,sum);
+(gdb) next
+31        }
+(gdb) next
+main () at main.c:38
+38          return 0;
+(gdb) next
+39        }
+(gdb) continue
 Continuing.
-1+2+3+4+5=15[Inferior 1 (process 203) exited normally]
+1+2+3+4+5=15[Inferior 1 (process 2335) exited normally]
+(gdb) Quit
+
 (gdb) 
