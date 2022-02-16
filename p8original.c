@@ -68,7 +68,7 @@ Complex add_n_complex(int n, Complex c[n])
 void output(int n, Complex c[n], Complex result)
 {
   int i;
-  for (i = 0; i < n; i++)
+  for (i = 0; i < n-1; i++)
     printf("%f + %fi\n", c[i].real, c[i].imaginary);
   printf("+ %f + %fi is %f + %fi\n", c[n-1].real, c[n-1].imaginary, result.real, result.imaginary);
 }
